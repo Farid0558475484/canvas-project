@@ -1,5 +1,10 @@
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
+var myColor = "black"; 
+
+document.getElementById("color").oninput = function () {
+    myColor = this.value;
+}
 
 canvas.width = 400;
 canvas.height = 200;
@@ -15,10 +20,10 @@ context.fillRect(150, 100, 100, 50);
 //draw3
 context.strokeStyle = "green";
 context.lineWidth = "10";
-context.rect(50,50,100,100) // x, y, width, height
-context.stroke()
+context.rect(50, 50, 100, 100); // x, y, width, height
+context.stroke();
 context.fillStyle = "yellow";
-context.fill()
+context.fill();
 
 context.clearRect(0, 0, 400, 200);
 
@@ -31,31 +36,46 @@ context.lineTo(150, 150);
 context.stroke();
 
 //draw5
-context.beginPath();
-context.strokeStyle = "blue";
-context.lineWidth = "20";
-context.moveTo(200, 50);
-context.lineTo(300, 50)
-context.lineTo(300, 100)
-context.lineCap = "square";
-context.stroke();
+// context.beginPath();
+// context.strokeStyle = "blue";
+// context.lineWidth = "20";
+// context.moveTo(200, 50);
+// context.lineTo(300, 50);
+// context.lineTo(300, 100);
+// context.lineCap = "square";
+// context.stroke();
 
 context.clearRect(0, 0, 400, 200);
 
-//draw6
+// draw6
 
-context.beginPath();
-context.moveTo(50, 150);
-context.lineTo(150, 50);
-context.lineTo(200, 150);
-// context.lineTo(50, 150);
-context.closePath();
-context.lineWidth = "14";
-context.lineCap="round";
-context.stroke();
-context.fillStyle = "red";
-context.fill();
+// context.beginPath();
+// context.moveTo(50, 150);
+// context.lineTo(150, 50);
+// context.lineTo(200, 150);
+// // context.lineTo(50, 150);
+// context.closePath();
+// context.lineWidth = "14";
+// context.lineCap = "round";
+// context.stroke();
+// context.fillStyle = "red";
+// context.fill();
 
 context.clearRect(0, 0, 400, 200);
 
 console.log("Hello World");
+
+canvas.onmousedown = function (event) {
+  canvas.onmousemove = function (event) {
+    var x = event.offsetX;
+    var y = event.offsetY;
+
+    context.fillRect(x - 5, y - 5, 10, 10);
+    context.fillStyle = myColor;
+    context.fill();
+  };
+
+  canvas.onmouseup = function (event) {
+    canvas.onmousemove = null;
+  };
+};
