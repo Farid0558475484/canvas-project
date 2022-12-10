@@ -190,7 +190,7 @@ function drawDot() {
   context2.moveTo(x, y);
   context2.lineTo(myX, myY);
   context2.stroke();
-  
+
   timer = setTimeout(drawDot, 100);
 }
 
@@ -200,3 +200,23 @@ canvas2.onmousemove = function (event) {
 };
 
 drawDot();
+
+////// canvas-4
+
+const canvas4 = document.getElementById("canvas4");
+const context4 = canvas4.getContext("2d");
+
+canvas4.width = 400;
+canvas4.height = 200;
+
+var x4 = 0;
+var timer4 = 0;
+
+function drawSin() {
+  y4 = 100 + 50 * Math.sin(x4);
+  x4 = x4 + 0.2;
+  context4.fillRect(5*x4, y4, 2, 2);
+  timer4 = setTimeout(drawSin, 10);
+}
+
+drawSin();
