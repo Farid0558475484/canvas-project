@@ -6,8 +6,8 @@ document.getElementById("color").oninput = function () {
   myColor = this.value;
 };
 
-canvas.width = 400;
-canvas.height = 200;
+canvas.width = 300;
+canvas.height = 300;
 
 // draw1
 // context.fillStyle = "red";
@@ -215,8 +215,36 @@ var timer4 = 0;
 function drawSin() {
   y4 = 100 + 50 * Math.sin(x4);
   x4 = x4 + 0.2;
-  context4.fillRect(5*x4, y4, 2, 2);
+  context4.fillRect(5 * x4, y4, 2, 2);
   timer4 = setTimeout(drawSin, 10);
 }
 
 drawSin();
+
+////// canvas-5
+
+const canvas5 = document.getElementById("canvas5");
+const context5 = canvas5.getContext("2d");
+
+canvas5.width = 600;
+canvas5.height = 600;
+
+context5.beginPath();
+
+var R = 200;
+var r = 140;
+var d = 120;
+var t = 0;
+
+var timer5 = 0;
+
+function spiro() {
+  var x = (R - r) * Math.cos(t) + d * Math.cos(((R - r) * t) / r);
+  var y = (R - r) * Math.sin(t) - d * Math.sin(((R - r) * t) / r);
+
+  t = t + 0.05;
+  context5.fillRect(300 + x, 300 + y, 4, 4);
+  timer5 = setTimeout(spiro, 10);
+}
+
+spiro();
